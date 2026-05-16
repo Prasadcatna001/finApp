@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable, TextInput, ScrollView, Alert, Keyboa
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useMoney } from '../context/MoneyContext';
+import { useVersion } from '../context/VersionContext';
 import { Colors } from '../constants/Colors';
 import * as Haptics from 'expo-haptics';
 import Toast from 'react-native-toast-message';
@@ -25,6 +26,7 @@ export default function ProfileScreen() {
     userName, setUserName, preferredCurrency, setPreferredCurrency, resetData,
     accounts, people, transactions, settlements, recurringRules 
   } = useMoney();
+  const { isUpdateAvailable, latestVersion, checkUpdates } = useVersion();
 
   const [nameInput, setNameInput] = useState(userName);
   const [feedbackVisible, setFeedbackVisible] = useState(false);
@@ -128,6 +130,19 @@ export default function ProfileScreen() {
             </View>
           </View>
 
+          {isUpdateAvailable && (
+            <Pressable style={styles.updateBanner} onPress={checkUpdates}>
+              <View style={styles.updateBannerContent}>
+                <Text style={styles.updateEmoji}>🚀</Text>
+                <View>
+                  <Text style={styles.updateTitle}>Update Available (v{latestVersion})</Text>
+                  <Text style={styles.updateSubtitle}>Tap to see what's new and download</Text>
+                </View>
+              </View>
+              <Text style={styles.updateArrow}>→</Text>
+            </Pressable>
+          )}
+
           <Text style={styles.sectionLabel}>Profile</Text>
           <View style={styles.card}>
             <View style={styles.fieldRow}>
@@ -196,7 +211,7 @@ export default function ProfileScreen() {
             <Text style={styles.resetBtnText}>Erase all data and start fresh</Text>
           </Pressable>
 
-          <Text style={styles.appVersion}>Money Tracker v1.0.0</Text>
+          <Text style={styles.appVersion}>Money Tracker v{Application.nativeApplicationVersion || '1.0.0'}</Text>
         </ScrollView>
 
         <Modal visible={feedbackVisible} transparent animationType="slide" onRequestClose={() => setFeedbackVisible(false)}>
@@ -274,6 +289,14 @@ const styles = StyleSheet.create({
   appVersion: { fontFamily: 'Outfit_400Regular', fontSize: 12, color: Colors.textMuted, textAlign: 'center' },
   divider: { height: 1, backgroundColor: Colors.divider, marginLeft: 16 },
   
+  // Update Banner
+  updateBanner: { backgroundColor: Colors.primary + '15', marginHorizontal: 20, marginTop: 10, marginBottom: 20, borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderWidth: 1, borderColor: Colors.primary + '30' },
+  updateBannerContent: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  updateEmoji: { fontSize: 24 },
+  updateTitle: { fontFamily: 'Outfit_600SemiBold', fontSize: 14, color: Colors.primary },
+  updateSubtitle: { fontFamily: 'Outfit_400Regular', fontSize: 12, color: Colors.textSub, marginTop: 2 },
+  updateArrow: { fontSize: 18, color: Colors.primary, opacity: 0.8 },
+
   // Modal styles
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'flex-end' },
   modalContent: { backgroundColor: Colors.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, paddingBottom: Platform.OS === 'ios' ? 40 : 24 },

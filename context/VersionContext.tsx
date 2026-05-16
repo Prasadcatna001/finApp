@@ -28,10 +28,12 @@ export const VersionProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const data = await response.json();
 
       if (data.tag_name) {
-        const currentVersion = Application.nativeApplicationVersion; // e.g. "1.0.0"
+        const currentVersion = Application.nativeApplicationVersion || '1.0.0';
         const latestTag = data.tag_name.replace('v', '');
 
-        // Simple version comparison (can be improved with semver)
+        console.log(`[VersionCheck] Current: ${currentVersion}, Latest: ${latestTag}`);
+
+        // Only show update if the versions are different
         if (latestTag !== currentVersion) {
           setIsUpdateAvailable(true);
           setLatestVersion(latestTag);

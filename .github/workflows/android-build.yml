@@ -45,13 +45,19 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease
 
+      - name: 🏷️ Get Version
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./app.json').expo.version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: 🚀 Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/heads/main')
         with:
-          tag_name: v${{ github.run_number }}
-          name: Release v${{ github.run_number }}
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: Release v${{ steps.get_version.outputs.version }}
           body_path: RELEASE_NOTES.md
           files: android/app/build/outputs/apk/release/app-release.apk
         env:

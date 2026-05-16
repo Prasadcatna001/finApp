@@ -28,9 +28,11 @@ function UpdatePrompt() {
           <Text style={styles.title}>Update Available!</Text>
           <Text style={styles.desc}>Version {latestVersion} is now available on GitHub.</Text>
           {releaseNotes && (
-            <View style={styles.notesBox}>
+            <View style={styles.notesContainer}>
               <Text style={styles.notesTitle}>What's New:</Text>
-              <Text style={styles.notesText}>{releaseNotes}</Text>
+              <ScrollView style={styles.notesScroll} showsVerticalScrollIndicator={true}>
+                <Text style={styles.notesText}>{releaseNotes}</Text>
+              </ScrollView>
             </View>
           )}
           <View style={styles.btnRow}>
@@ -53,9 +55,10 @@ const styles = StyleSheet.create({
   emoji: { fontSize: 40, marginBottom: 16 },
   title: { fontFamily: 'Outfit_700Bold', fontSize: 20, color: Colors.text, marginBottom: 8 },
   desc: { fontFamily: 'Outfit_400Regular', fontSize: 14, color: Colors.textSub, textAlign: 'center', marginBottom: 20 },
-  notesBox: { alignSelf: 'stretch', backgroundColor: Colors.surface, borderRadius: 12, padding: 16, marginBottom: 20 },
-  notesTitle: { fontFamily: 'Outfit_600SemiBold', fontSize: 12, color: Colors.textSub, marginBottom: 4 },
-  notesText: { fontFamily: 'Outfit_400Regular', fontSize: 13, color: Colors.text, lineHeight: 18 },
+  notesContainer: { alignSelf: 'stretch', backgroundColor: Colors.surface, borderRadius: 12, padding: 16, marginBottom: 20, maxHeight: 300 },
+  notesTitle: { fontFamily: 'Outfit_600SemiBold', fontSize: 12, color: Colors.textSub, marginBottom: 8 },
+  notesScroll: { flexGrow: 0 },
+  notesText: { fontFamily: 'Outfit_400Regular', fontSize: 13, color: Colors.text, lineHeight: 20 },
   btnRow: { flexDirection: 'row', gap: 12 },
   skipBtn: { flex: 1, paddingVertical: 14, alignItems: 'center' },
   skipBtnText: { fontFamily: 'Outfit_500Medium', fontSize: 14, color: Colors.textSub },
