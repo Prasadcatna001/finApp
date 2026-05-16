@@ -31,7 +31,7 @@ export default function ProfileScreen() {
   const [feedbackType, setFeedbackType] = useState<'issue' | 'review'>('review');
   const [feedbackMsg, setFeedbackMsg] = useState('');
 
-  const GITHUB_REPO = "https://github.com/user/ledgerly"; // Update with actual repo
+  const GITHUB_REPO = "https://github.com/Prasadcatna001/finApp"; // Update with actual repo
   const SUPPORT_EMAIL = "homegarage70@gmail.com"; // Update with actual email
 
   const handleSave = () => {
