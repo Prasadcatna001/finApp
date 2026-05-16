@@ -1,0 +1,15 @@
+1. Notification is not displayed crclty
+
+2. In activities window the UI is not good
+
+3. Have option to remove delete or edit the transactions, person
+4. Have option in setting to read SMS (also have option to train SMS of particular bank because in indian banks sms format are not same right)
+5. Show month wise income, expense, etc
+6. Unable to move out of lean/borrow page and unable to save the lent/borrow records
+Error: 
+
+
+
+
+
+7. Error while starting the app “ D:\coding\finapp\app\(tabs)\_layout.tsx:81 "shadow*" style props are deprecated. Use "boxShadow". “
