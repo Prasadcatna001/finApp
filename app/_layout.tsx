@@ -8,7 +8,47 @@ import { MoneyProvider } from '../context/MoneyContext';
 import { VersionProvider, useVersion } from '../context/VersionContext';
 import { Colors } from '../constants/Colors';
 import Toast from 'react-native-toast-message';
-import { Modal, Text, Pressable, Linking, StyleSheet } from 'react-native';
+import { Modal, Text, Pressable, Linking, StyleSheet, ScrollView } from 'react-native';
+
+function CleanNotes({ notes }: { notes: string }) {
+  const lines = notes.split('\n');
+  return (
+    <View style={styles.cleanNotesContainer}>
+      {lines.map((line, i) => {
+        const trimmed = line.trim();
+        if (!trimmed) return null;
+
+        // Header
+        if (trimmed.startsWith('#')) {
+          return (
+            <Text key={i} style={styles.noteHeader}>
+              {trimmed.replace(/^#+\s*/, '').replace(/\*\*/g, '')}
+            </Text>
+          );
+        }
+
+        // List Item
+        if (trimmed.startsWith('-') || trimmed.startsWith('*')) {
+          return (
+            <View key={i} style={styles.noteItemRow}>
+              <View style={styles.bullet} />
+              <Text style={styles.noteItemText}>
+                {trimmed.replace(/^[-*]\s*/, '').replace(/\*\*/g, '')}
+              </Text>
+            </View>
+          );
+        }
+
+        // Normal text
+        return (
+          <Text key={i} style={styles.noteText}>
+            {trimmed.replace(/\*\*/g, '')}
+          </Text>
+        );
+      })}
+    </View>
+  );
+}
 
 function UpdatePrompt() {
   const { isUpdateAvailable, latestVersion, releaseNotes, downloadUrl } = useVersion();
@@ -31,7 +71,7 @@ function UpdatePrompt() {
             <View style={styles.notesContainer}>
               <Text style={styles.notesTitle}>What's New:</Text>
               <ScrollView style={styles.notesScroll} showsVerticalScrollIndicator={true}>
-                <Text style={styles.notesText}>{releaseNotes}</Text>
+                <CleanNotes notes={releaseNotes} />
               </ScrollView>
             </View>
           )}
@@ -58,7 +98,12 @@ const styles = StyleSheet.create({
   notesContainer: { alignSelf: 'stretch', backgroundColor: Colors.surface, borderRadius: 12, padding: 16, marginBottom: 20, maxHeight: 300 },
   notesTitle: { fontFamily: 'Outfit_600SemiBold', fontSize: 12, color: Colors.textSub, marginBottom: 8 },
   notesScroll: { flexGrow: 0 },
-  notesText: { fontFamily: 'Outfit_400Regular', fontSize: 13, color: Colors.text, lineHeight: 20 },
+  cleanNotesContainer: { gap: 8 },
+  noteHeader: { fontFamily: 'Outfit_700Bold', fontSize: 15, color: Colors.primary, marginTop: 8, marginBottom: 4 },
+  noteItemRow: { flexDirection: 'row', gap: 10, alignItems: 'flex-start' },
+  bullet: { width: 4, height: 4, borderRadius: 2, backgroundColor: Colors.textSub, marginTop: 8 },
+  noteItemText: { fontFamily: 'Outfit_400Regular', fontSize: 13, color: Colors.text, lineHeight: 20, flex: 1 },
+  noteText: { fontFamily: 'Outfit_400Regular', fontSize: 13, color: Colors.textSub, lineHeight: 18 },
   btnRow: { flexDirection: 'row', gap: 12 },
   skipBtn: { flex: 1, paddingVertical: 14, alignItems: 'center' },
   skipBtnText: { fontFamily: 'Outfit_500Medium', fontSize: 14, color: Colors.textSub },

@@ -12,6 +12,7 @@ import * as Sharing from 'expo-sharing';
 import * as MailComposer from 'expo-mail-composer';
 import * as Linking from 'expo-linking';
 import { Modal } from 'react-native';
+import * as Application from 'expo-application';
 
 const CURRENCIES = [
   { symbol: '₹', label: 'INR' },
@@ -269,7 +270,7 @@ const styles = StyleSheet.create({
   cancel: { fontFamily: 'Outfit_400Regular', fontSize: 15, color: Colors.textSub },
   title: { fontFamily: 'Outfit_700Bold', fontSize: 16, color: Colors.text },
   save: { fontFamily: 'Outfit_600SemiBold', fontSize: 15, color: Colors.primary },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 80 },
   avatarWrap: { alignItems: 'center', marginBottom: 24, marginTop: 10 },
   avatar: { width: 80, height: 80, borderRadius: 40, backgroundColor: Colors.primary + '30', justifyContent: 'center', alignItems: 'center' },
   avatarText: { fontFamily: 'Outfit_800ExtraBold', fontSize: 32, color: Colors.primary, lineHeight: 40, textAlignVertical: 'center', includeFontPadding: false },

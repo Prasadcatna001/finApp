@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   cancel: { fontFamily: 'Outfit_400Regular', fontSize: 15, color: Colors.textSub },
   title: { fontFamily: 'Outfit_700Bold', fontSize: 16, color: Colors.text },
   save: { fontFamily: 'Outfit_600SemiBold', fontSize: 15, color: Colors.primary },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 100 },
   typeToggle: { gap: 10, marginBottom: 20 },
   typeBtn: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 16, borderRadius: 16, backgroundColor: Colors.card, borderWidth: 1, borderColor: Colors.cardBorder },
   typeBtnIcon: { fontSize: 24, width: 30, textAlign: 'center' },

@@ -215,13 +215,13 @@ export function MoneyProvider({ children }: { children: ReactNode }) {
   const loadAll = async () => {
     try {
       const [acc, ppl, txs, stl, rec, sug, uname, curr] = await Promise.all([
-        load('money_accounts', MOCK_ACCOUNTS),
-        load('money_people', MOCK_PEOPLE),
-        load('money_transactions', MOCK_TRANSACTIONS),
-        load('money_settlements', MOCK_SETTLEMENTS),
-        load('money_recurring', MOCK_RECURRING),
-        load('money_suggestions', MOCK_SUGGESTIONS),
-        load('money_userName', 'You'),
+        load('money_accounts', []),
+        load('money_people', []),
+        load('money_transactions', []),
+        load('money_settlements', []),
+        load('money_recurring', []),
+        load('money_suggestions', []),
+        load('money_userName', 'User'),
         load('money_currency', '₹'),
       ]);
       setAccounts(acc); setPeople(ppl); setTransactions(txs);

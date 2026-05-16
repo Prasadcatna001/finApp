@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   cancel: { fontFamily: 'Outfit_400Regular', fontSize: 15, color: Colors.textSub },
   title: { fontFamily: 'Outfit_700Bold', fontSize: 16, color: Colors.text },
   save: { fontFamily: 'Outfit_600SemiBold', fontSize: 15, color: Colors.primary },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 100 },
   avatarPreview: { alignItems: 'center', marginBottom: 16 },
   avatar: { width: 72, height: 72, borderRadius: 36, justifyContent: 'center', alignItems: 'center', marginBottom: 8 },
   avatarText: { fontFamily: 'Outfit_800ExtraBold', fontSize: 30, lineHeight: 38, textAlignVertical: 'center', includeFontPadding: false },

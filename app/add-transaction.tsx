@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   typeTabActive: {},
   typeTabText: { fontFamily: 'Outfit_600SemiBold', fontSize: 14, color: Colors.textMuted },
   typeTabLine: { position: 'absolute', bottom: 0, left: '15%', right: '15%', height: 2, borderRadius: 1 },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 100 },
   amountRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 20, gap: 4 },
   currSign: { fontFamily: 'Outfit_700Bold', fontSize: 40, color: Colors.textSub, marginTop: 8 },
   amountInput: { fontFamily: 'Outfit_800ExtraBold', fontSize: 60, color: Colors.text, minWidth: 80 },

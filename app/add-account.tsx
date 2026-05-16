@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   cancel: { fontFamily: 'Outfit_400Regular', fontSize: 15, color: Colors.textSub },
   title: { fontFamily: 'Outfit_700Bold', fontSize: 16, color: Colors.text },
   save: { fontFamily: 'Outfit_600SemiBold', fontSize: 15, color: Colors.primary },
-  content: { paddingHorizontal: 20, paddingBottom: 40 },
+  content: { paddingHorizontal: 20, paddingBottom: 100 },
   sectionLabel: { fontFamily: 'Outfit_500Medium', fontSize: 13, color: Colors.textSub, marginBottom: 12 },
   typeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 20 },
   typeCard: { backgroundColor: Colors.card, borderRadius: 16, padding: 14, borderWidth: 1, borderColor: Colors.cardBorder, alignItems: 'center', width: '30%' },
