@@ -18,7 +18,7 @@ export const VersionProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [releaseNotes, setReleaseNotes] = useState<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
-  const GITHUB_REPO_API = "https://api.github.com/repos/user/ledgerly/releases/latest"; // Update with actual repo
+  const GITHUB_REPO_API = "https://api.github.com/repos/Prasadcatna001/finApp/releases/latest";
 
   const checkUpdates = async () => {
     if (Platform.OS === 'web') return;
